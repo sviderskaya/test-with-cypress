@@ -1,11 +1,14 @@
 /// <reference types="Cypress" />
 
-describe('template spec', () => {
-  it('passes', () => {
-    cy.visit('https://wikipedia.org')
-    cy.get('#js-link-box-en').click()
-    cy.get('#pt-createaccount-2').should('be.visible')
-    cy.get('#pt-login-2').should('be.visible')
-    cy.get('#vector-user-links-dropdown-checkbox').should('exist')
+import wikiHome from './home.page'
+import englishPage from './english.page'
+
+describe('test', () => {
+  it('Should', () => {
+    wikiHome.visit()
+    wikiHome.getEnglish().click()
+    englishPage.getCreateAccount().should('contain', 'Create account')
+    englishPage.getLogIn().should('contain', 'Log in')
+    englishPage.getThreeDots().click()
   })
 })
